@@ -9,6 +9,10 @@
 
     <!-- Strings related to login -->
 
+    <string name="action_login">Login</string>
+    <string name="prompt_user">Usuario</string>
+    <string name="prompt_password">Contraseña</string>
+
     <string name="action_save_in">Guardar Datos</string>
     <string name="action_save_in_short">Guardar</string>
 

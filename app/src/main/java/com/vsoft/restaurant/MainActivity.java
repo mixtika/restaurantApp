@@ -29,18 +29,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         setContentView(R.layout.activity_main);
         GridView gridView = (GridView)findViewById(R.id.grid);
-        MyGrid ad = new MyGrid(this, getRestaurants());
-        gridView.setAdapter(ad);
-        gridView.setOnItemClickListener(this);
+        Restaurants []temp = getRestaurants();
+        if(temp!=null)
+        {
+            MyGrid ad = new MyGrid(this, getRestaurants());
+            gridView.setAdapter(ad);
+            gridView.setOnItemClickListener(this);
+        }
     }
 
     private Restaurants []getRestaurants()
     {
-        GetServer ob = new GetServer();
-        String cad=ob.stringQuery("http://10.0.2.2:3000/api/v1.0/list","GET");
-        //String cad=ob.stringQuery("http://192.168.1.2:3000/api/v1.0/list","GET");
         try
         {
+            GetServer ob = new GetServer();
+            String cad=ob.stringQuery("/list","GET");
             JSONObject json=new JSONObject(cad);
             JSONArray array=json.optJSONArray("restaurants");
             rest=new Restaurants[array.length()];
@@ -90,7 +93,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             //GetServer ob = new GetServer();
             //String cad=ob.stringQuery("http://10.0.2.2:3000/api/v1.0/list","GET");
             //String cad=ob.stringQuery("http://192.168.1.2:3000/api/v1.0/save_restaurant?name=Restaurant el Futuro&nit=6601200015&property=Jhon Daniel&street=Boqueron&phone=67935935&lat=-19.75&log=-75.75","POST");
-            Toast.makeText(getApplicationContext(),"en proceso...",Toast.LENGTH_LONG).show();
+            //Toast.makeText(getApplicationContext(),"en proceso...",Toast.LENGTH_LONG).show();
+            Intent ob = new Intent(this, Login.class);
+            startActivity(ob);
             return true;
         }
         if(id == R.id.opcion2)

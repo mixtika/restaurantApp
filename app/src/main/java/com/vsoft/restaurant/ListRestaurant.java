@@ -42,7 +42,7 @@ public class ListRestaurant extends AppCompatActivity implements AdapterView.OnI
         return rest;*/
 
         GetServer ob = new GetServer();
-        String cad=ob.stringQuery("http://10.0.2.2:3000/api/v1.0/list","GET");
+        String cad=ob.stringQuery("/list","GET");
         try
         {
             JSONObject json=new JSONObject(cad);
